@@ -47,9 +47,9 @@ form {
 	<div class='bottom-border'>
 			<h2 class='title'>Products List</h2>
 			<div class="button">
-			<a href="add-product.php" id='add' ><button>ADD</button></a>
+			<a href="add-product.php" ><button>ADD</button></a>
 			<form method="post" class='delete-checkbox'>
-			<input type='submit'  class='delete-checkbox' id='#delete-product-btn'>
+			<input type='submit' id="delete-product-btn">
 			</div>
 		</div>
 		
