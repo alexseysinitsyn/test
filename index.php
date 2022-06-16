@@ -48,8 +48,8 @@ form {
 			<h2 class='title'>Products List</h2>
 			<div class="button">
 			<a href="add-product.php" ><button>ADD</button></a>
-			<form method="post" class='delete-checkbox'>
-			<input type='submit' id="delete-product-btn">
+			<form method="post">
+			<input type='submit' value="MASS DELETE" id="delete-product-btn">
 			</div>
 		</div>
 		

@@ -83,34 +83,25 @@ Class Product
     $i=0;
     foreach($sql as $one)
     {
-      if($one['size'])
-      {
-         $list[$i]="<div  class='block'>
+      $block1="<div  class='block'>
          <input  type='checkbox' class='delete-checkbox' name='checked[]' value=".$one['sku'].">
          <p id='sku'>".$one['sku']."<p>
          <p id='name'>".$one['name']."<p>
-         <p id='price'>".$one['price']."$<p>
-         <p id='size'>Size:".$one['size']."MB<p>
+         <p id='price'>".$one['price']."$<p>";
+      if($one['size'])
+      {
+         $block2="<p id='size'>Size:".$one['size']."MB<p>
          </div>";
       }else if($one['weight'])
       {
-        $list[$i]="<div  class='block'>
-        <input  type='checkbox' class='delete-checkbox' name='checked[]' value=".$one['sku'].">
-        <p id='sku'>".$one['sku']."<p>
-        <p id='name'>".$one['name']."<p>
-        <p id='price'>".$one['price']."$<p>
-        <p id='weight'>Weight:".$one['weight']."MB<p>
+        $block2="<p id='weight'>Weight:".$one['weight']."MB<p>
         </div>"; 
       }else if($one['dimension'])
       {
-        $list[$i]="<div  class='block'>
-        <input  type='checkbox' class='delete-checkbox' name='checked[]' value=".$one['sku'].">
-        <p id='sku'>".$one['sku']."<p>
-        <p id='name'>".$one['name']."<p>
-        <p id='price'>".$one['price']."$<p>
-        <p id='dimension'>Dimension:".$one['dimension']."<p>
+        $block2="<p id='dimension'>Dimension:".$one['dimension']."<p>
         </div>"; 
       }
+      $list[$i]="$block1 $block2";
          $i++;
     }
     return $list;
