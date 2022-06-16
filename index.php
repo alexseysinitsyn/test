@@ -49,7 +49,7 @@ form {
 			<div class="button">
 			<a href="add-product.php" id='add' ><button>ADD</button></a>
 			<form method="post" class='delete-checkbox'>
-			<input type='submit'  class='delete-checkbox' id='delete-product-btn'>
+			<input type='submit'  class='delete-checkbox' id='#delete-product-btn'>
 			</div>
 		</div>
 		
