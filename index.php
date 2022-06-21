@@ -1,7 +1,8 @@
 <?php 
 
 require 'vendor/autoload.php';
-
+var_dump('ku');
+die;
  use Models\Product;
 	$model = new Product();
 	$model->delete();
