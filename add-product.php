@@ -68,6 +68,7 @@
         <p>Price: <input type="number" step="0.01" name="price" id="price" required=""/>$</p>
         <p>Product Type: 
             <select size="1"  id="productType" required="" >
+                <option disabled>Product Type:</option>
                 <option id="DVD" value="DVD">DVD</option>
                 <option id="Furniture" value="Furniture">Furniture</option>
                 <option id="Book" value="Book">Book</option>
