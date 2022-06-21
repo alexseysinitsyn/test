@@ -1,6 +1,4 @@
 <?php 
-var_dump('ku');
-die;
 
 require 'vendor/autoload.php';
 
