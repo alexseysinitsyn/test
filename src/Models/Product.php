@@ -18,7 +18,7 @@ Class Product
         private $dimension;
    public function __construct()
    {
-       $this->connect = mysqli_connect("localhost:8889","root","root","shop");
+       $this->connect = pg_connect("ec2-52-214-23-110.eu-west-1.compute.amazonaws.com:5432","sxzbcamvmktagm","4922e1ed52e6e149101f10b15a88dd5422070af6534bf06ad3fa2cf19b104b81","d48th6okcacqg9");
        
    }
 
