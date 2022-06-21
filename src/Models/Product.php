@@ -18,7 +18,7 @@ Class Product
         private $dimension;
    public function __construct()
    {
-       $this->connect = pg_connect("ec2-52-214-23-110.eu-west-1.compute.amazonaws.com:5432","sxzbcamvmktagm","4922e1ed52e6e149101f10b15a88dd5422070af6534bf06ad3fa2cf19b104b81","d48th6okcacqg9");
+       $this->connect = mysqli_connect("sql4.freemysqlhosting.net","sql4501255","lyqGprQLi5","sql4501255");
        
    }
 
@@ -57,7 +57,7 @@ Class Product
           $this->dimension = $this->height.'x'.$this->width.'x'.$this->length;
         }
    
-          $sql = $this->connect->real_query('INSERT INTO products (sku, name, price, size, weight, dimension ) VALUES("'.$this->sku.'","'.$this->name.'","'.$this->price.'","'.$this->size.'","'.$this->weight.'","'.$this->dimension.'")');
+          $sql = $this->connect->query('INSERT INTO products (sku, name, price, size, weight, dimension ) VALUES("'.$this->sku.'","'.$this->name.'","'.$this->price.'","'.$this->size.'","'.$this->weight.'","'.$this->dimension.'")');
           header("Location: index.php"); exit;
       }
     } 
@@ -122,14 +122,21 @@ $table = 'CREATE TABLE IF NOT EXISTS products (
     sku VARCHAR (255) NOT NULL PRIMARY KEY,
     name  VARCHAR (255) NOT NULL,
     price  INTEGER NOT NULL,
-    weight VARCHAR (255),
-    width VARCHAR (255),
-    height VARCHAR (255),
-    length  VARCHAR (255),
-    size VARCHAR (255))';
+    weight INTEGER DEFAULT NULL(255),
+    dimension  INTEGER DEFAULT NULL(255),
+    size INTEGER DEFAULT NULL(255))';
 
-$db = new Product();   
-$db->exec($table);
+$sql = new Product();   
+$sql = $this->connect->query('CREATE TABLE IF NOT EXISTS products (
+  sku VARCHAR (255) NOT NULL PRIMARY KEY,
+  name  VARCHAR (255) NOT NULL,
+  price  INTEGER NOT NULL,
+  weight INTEGER DEFAULT NULL(255),
+  dimension  INTEGER DEFAULT NULL(255),
+  size INTEGER DEFAULT NULL(255))');
     }
 }
-(new SqlCreateTable())->createTable(); */
+
+(new SqlCreateTable())->createTable(); 
+var_dump('table is created');
+die;*/
