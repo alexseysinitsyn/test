@@ -38,15 +38,18 @@
 {
     $('#productType').change(function()
     {
-        $('.attribute').empty();
+        
         if($('#productType').val()=='DVD')
         {
+            $('.attribute').empty();
             $('.attribute').html('<p>Please, provide size</p><p><input type="number" name="size" id="size" required="">MB</p>'); 
         }else if($('#productType').val()=='Book')
         {
+            $('.attribute').empty();
             $('.attribute').html('<p>Please, provide weight</p><p><input type="number" name="weight" id="weight" required="">KG</p>'); 
         }else if($('#productType').val()=='Furniture')
         {
+            $('.attribute').empty();
             $('.attribute').html(
             '<p>Please, provide dimensions</p><p>Height<input type="number" name="height" id="height">CM</p><p>Width<input type="number" name="width" id="width">CM</p><p>Length<input type="number" name="length" id="length" required="">CM</p>'); 
         }
@@ -69,9 +72,10 @@
         <p>Product Type: 
             <select size="1"  id="productType" required="" >
                 <option disabled>Product Type:</option>
-                <option id="DVD" value="DVD">DVD</option>
                 <option id="Furniture" value="Furniture">Furniture</option>
                 <option id="Book" value="Book">Book</option>
+                <option id="DVD" value="DVD">DVD</option>
+                
             </select>
         </p>
         <p class="attribute"></p>
