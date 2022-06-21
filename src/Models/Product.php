@@ -54,7 +54,7 @@ Class Product
         $this->length = $_POST['length'];
         if($this->height)
         {
-          $this->dimension = $this->height.'x'.$this->width.'x'.$this->length;
+          $this->dimension = $this->height."x".$this->width."x".$this->length;
         }
    
           $sql = $this->connect->query('INSERT INTO products (sku, name, price, size, weight, dimension ) VALUES("'.$this->sku.'","'.$this->name.'","'.$this->price.'","'.$this->size.'","'.$this->weight.'","'.$this->dimension.'")');
