@@ -100,6 +100,8 @@ Class Product
       {
         $block2="<p id='dimension'>Dimension:".$one['dimension']."<p>
         </div>"; 
+      }else{
+        $block2="</div>";
       }
       $list[$i]="$block1 $block2";
          $i++;
