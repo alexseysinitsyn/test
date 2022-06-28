@@ -2,20 +2,11 @@
 namespace Models;
 
 
+
  
-Class Product
+Class Product extends Main
 {
-        private $connect;
-        private $sku;
-        private $name;
-        private $type;
-        private $price;
-        private $size;
-        private $weight;
-        private $height;
-        private $width;
-        private $length;
-        private $dimension;
+        
    public function __construct()
    {
        $this->connect = mysqli_connect("sql4.freemysqlhosting.net","sql4501255","lyqGprQLi5","sql4501255");
@@ -24,11 +15,9 @@ Class Product
 
    public function validate()
    {
-    
-      $this->sku = $_POST['sku'];
-      if($this->sku)
+      if(isset($_POST['sku']))
       {
-        $check_sku = $this->connect->query("SELECT sku FROM products WHERE sku = '".$this->sku."'");
+        $check_sku = $this->connect->query("SELECT sku FROM products WHERE sku = '".$this->getSku()."'");
         if($check_sku->num_rows > 0)
         {
           echo "Sorry, sku  already exists";
@@ -44,20 +33,12 @@ Class Product
     {
       if($_POST)
       {
-        $this->sku = $_POST['sku'];
-        $this->name = $_POST['name'];
-        $this->price = $_POST['price'];
-        $this->size = $_POST['size'];
-        $this->weight = $_POST['weight'];
-        $this->height = $_POST['height'];
-        $this->width = $_POST['width'];
-        $this->length = $_POST['length'];
-        if($this->height)
-        {
-          $this->dimension = $this->height."x".$this->width."x".$this->length;
-        }
+        $this->setSku($_POST['sku']);
+        $this->setName($_POST['name']);
+        $this->setPrice($_POST['price']);
+        $this->setProperty($_POST['size'], $_POST['weight'], $_POST['height'], $_POST['width'], $_POST['length']);
    
-          $sql = $this->connect->query('INSERT INTO products (sku, name, price, size, weight, dimension ) VALUES("'.$this->sku.'","'.$this->name.'","'.$this->price.'","'.$this->size.'","'.$this->weight.'","'.$this->dimension.'")');
+          $sql = $this->connect->query('INSERT INTO products (sku, name, price, property ) VALUES("'.$this->getSku().'","'.$this->getName().'","'.$this->getPrice().'","'.$this->getProperty().'")');
           header("Location: index.php"); exit;
       }
     } 
@@ -83,27 +64,9 @@ Class Product
     $i=0;
     foreach($sql as $one)
     {
-      $block1="<div  class='block'>
-         <input  type='checkbox' class='delete-checkbox' name='checked[]' value=".$one['sku'].">
-         <p id='sku'>".$one['sku']."<p>
-         <p id='name'>".$one['name']."<p>
-         <p id='price'>".$one['price']."$<p>";
-      if($one['size'])
-      {
-         $block2="<p id='size'>Size:".$one['size']."MB<p>
-         </div>";
-      }else if($one['weight'])
-      {
-        $block2="<p id='weight'>Weight:".$one['weight']."MB<p>
-        </div>"; 
-      }else if($one['dimension'])
-      {
-        $block2="<p id='dimension'>Dimension:".$one['dimension']."<p>
-        </div>"; 
-      }else{
-        $block2="</div>";
-      }
-      $list[$i]="$block1 $block2";
+      $list[$i]= '<div  class="block">
+         <input  type="checkbox" class="delete-checkbox" name="checked[]" value='.$one['sku'].'><p>'
+         .implode('<p>', $one).'<p>';
          $i++;
     }
     return $list;

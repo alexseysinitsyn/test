@@ -3,8 +3,9 @@
 require 'vendor/autoload.php';
 
  use Models\Product;
-
+ 
 	$model = new Product();
+	
 	$model->delete();
 	$list = $model->listAll();
 		
