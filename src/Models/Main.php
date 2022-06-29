@@ -70,8 +70,8 @@ abstract class Main
     public function getProductAttributes()
     {
         return [
-            $this->getName(),
             $this->getSku(),
+            $this->getName(),
             $this->getPrice(),
             $this->getProperty()
         ];
