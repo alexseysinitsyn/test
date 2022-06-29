@@ -16,7 +16,11 @@ class Product extends Main
    {
       if(isset($_POST['sku']))
       {
-        $check_sku = $this->connect->query("SELECT sku FROM products WHERE sku = '".$this->getSku()."'");
+        $this->setSku($_POST['sku']);
+        $sql='SELECT sku FROM ' . $this->getTableName() . ' WHERE sku ='. $this->getSku();
+        $check_sku = $this->connect->query($sql);
+        var_dump(count($check_sku));
+      die;
         if($check_sku->num_rows > 0)
         {
           echo "Sorry, sku  already exists";
@@ -49,8 +53,8 @@ class Product extends Main
       {
 	      foreach($checkbox as $check)
         { 
-          $this->setColumnSku($check);
-          $sql='DELETE FROM ' . $this->getTableName() . ' WHERE '. $this->getColumnSku();
+          $this->setSku($check);
+          $sql='DELETE FROM ' . $this->getTableName() . ' WHERE sku = '. $this->getSku();
 	        $this->connect->query($sql);
         }
           header("Location: index.php"); exit;
