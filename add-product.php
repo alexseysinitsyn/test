@@ -70,8 +70,8 @@
         <p>Name: <input type="text" name="name" id="name" required=""/></p>
         <p>Price: <input type="number" step="0.01" name="price" id="price" required=""/>$</p>
         <p>Product Type: 
-            <select size="1"  id="productType" required="" >
-                <option id="Other">Product Type:</option>
+            <select size="1"  id="productType" required >
+                <option value="">Product Type:</option>
                 <option id="Furniture" value="Furniture">Furniture</option>
                 <option id="Book" value="Book">Book</option>
                 <option id="DVD" value="DVD">DVD</option>

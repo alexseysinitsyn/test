@@ -73,35 +73,3 @@ class Product extends Main
   }
 
 }
-
-
-
-
-
-
-
-/*class SqlCreateTable{
-    public function createTable()
-    {
-$table = 'CREATE TABLE IF NOT EXISTS products (
-    sku VARCHAR (255) NOT NULL PRIMARY KEY,
-    name  VARCHAR (255) NOT NULL,
-    price  INTEGER NOT NULL,
-    weight INTEGER DEFAULT NULL(255),
-    dimension  INTEGER DEFAULT NULL(255),
-    size INTEGER DEFAULT NULL(255))';
-
-$sql = new Product();   
-$sql = $this->connect->query('CREATE TABLE IF NOT EXISTS products (
-  sku VARCHAR (255) NOT NULL PRIMARY KEY,
-  name  VARCHAR (255) NOT NULL,
-  price  INTEGER NOT NULL,
-  weight INTEGER DEFAULT NULL(255),
-  dimension  INTEGER DEFAULT NULL(255),
-  size INTEGER DEFAULT NULL(255))');
-    }
-}
-
-(new SqlCreateTable())->createTable(); 
-var_dump('table is created');
-die;*/
