@@ -41,6 +41,7 @@ form {
 	height:250px;
 	border: 1px solid black;
 	margin:7px;
+	line-height: 2.0;
 }
 </style>
 <script>

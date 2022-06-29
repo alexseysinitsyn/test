@@ -1,15 +1,29 @@
 <?php
-Abstract Class Main
+namespace Models;
+
+abstract class Main
 {
-  
-    protected $sku;
-    protected $name;
-    protected $type;
-    protected $price;
-    protected $property;
+    private $tableName;
+    private $sku;
+    private $name;
+    private $type;
+    private $price;
+    private $property;
 
 
-
+    public function getTableName()
+    {
+        return 'products';
+    }
+    
+    public function getTableColumns()
+    {
+        return [
+            'sku',
+            'name',
+            'price',
+            'property'];
+    }
 
     public function getName()
     {
@@ -46,9 +60,19 @@ Abstract Class Main
     }
     public function setProperty($size, $weight, $height, $width, $length)
     {
-        $this->property = (!empty($size) ? ' Size:' .$size. 'MB' : '') 
-        .(!empty($weight) ? ' Weight:' . $weight . 'KG' : '')
-        .(!empty($height) ? ' Dimension:' . implode('x', [$height, $width, $length]) : '');
+        $this->property = (!empty($size) ? ' Size:' .$size. 'MB' : ' ') 
+        .(!empty($weight) ? ' Weight:' . $weight . 'KG' : ' ')
+        .(!empty($height) ? ' Dimension:' . implode('x', [$height, $width, $length]) : ' ');
+    }
+
+    public function getProductAttributes()
+    {
+        return [
+            $this->getName(),
+            $this->getSku(),
+            $this->getPrice(),
+            $this->getProperty()
+        ];
     }
 
 }

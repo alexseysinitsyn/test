@@ -1,15 +1,14 @@
 <?php
 namespace Models;
 
-
-
- 
-Class Product extends Main
+class Product extends Main
 {
-        
+   
    public function __construct()
    {
-       $this->connect = mysqli_connect("sql4.freemysqlhosting.net","sql4501255","lyqGprQLi5","sql4501255");
+    
+       /*$this->connect = mysqli_connect("sql4.freemysqlhosting.net","sql4501255","lyqGprQLi5","sql4501255");*/
+       $this->connect = mysqli_connect("localhost:8889","root","root","shop");
        
    }
 
@@ -36,9 +35,10 @@ Class Product extends Main
         $this->setSku($_POST['sku']);
         $this->setName($_POST['name']);
         $this->setPrice($_POST['price']);
-        $this->setProperty($_POST['size'], $_POST['weight'], $_POST['height'], $_POST['width'], $_POST['length']);
-   
-          $sql = $this->connect->query('INSERT INTO products (sku, name, price, property ) VALUES("'.$this->getSku().'","'.$this->getName().'","'.$this->getPrice().'","'.$this->getProperty().'")');
+        $this->setProperty($_POST['size'], $_POST['weight'], $_POST['height'], $_POST['width'], $_POST['length']); 
+
+        $sql='INSERT INTO ' . $this->getTableName() . '(' . implode(', ', $this->getTableColumns()) . ') VALUES ("' . implode('", "', $this->getProductAttributes()) . '")';
+       $this->connect->real_query($sql);
           header("Location: index.php"); exit;
       }
     } 
@@ -66,7 +66,7 @@ Class Product extends Main
     {
       $list[$i]= '<div  class="block">
          <input  type="checkbox" class="delete-checkbox" name="checked[]" value='.$one['sku'].'><p>'
-         .implode('<p>', $one).'<p>';
+         .implode('<br>', $one).'<br></div>';
          $i++;
     }
     return $list;
