@@ -7,8 +7,8 @@ class Product extends Main
    public function __construct()
    {
     
-       /*$this->connect = mysqli_connect("sql4.freemysqlhosting.net","sql4501255","lyqGprQLi5","sql4501255");*/
-       $this->connect = mysqli_connect("localhost:8889","root","root","shop");
+       $this->connect = mysqli_connect("sql4.freemysqlhosting.net","sql4501255","lyqGprQLi5","sql4501255");
+      /* $this->connect = mysqli_connect("localhost:8889","root","root","shop");*/
        
    }
 
