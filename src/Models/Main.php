@@ -10,6 +10,7 @@ abstract class Main
     private $price;
     private $property;
     private $oneProduct;
+    private $columnSku;
 
 
     public function getTableName()
@@ -24,6 +25,16 @@ abstract class Main
             'name',
             'price',
             'property'];
+    }
+
+    public function getColumnSku()
+    {
+        return $this->columnSku;
+    }
+   
+    public function setColumnSku($check)
+    {
+        $this->columnSku = 'sku = "'.$check.'"';
     }
 
     public function getName()

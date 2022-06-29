@@ -7,8 +7,8 @@ class Product extends Main
    public function __construct()
    {
     
-       $this->connect = mysqli_connect("sql4.freemysqlhosting.net","sql4501255","lyqGprQLi5","sql4501255");
-      /* $this->connect = mysqli_connect("localhost:8889","root","root","shop");*/
+      $this->connect = mysqli_connect("sql4.freemysqlhosting.net","sql4501255","lyqGprQLi5","sql4501255");
+       /*$this->connect = mysqli_connect("localhost:8889","root","root","shop");*/
        
    }
 
@@ -49,7 +49,9 @@ class Product extends Main
       {
 	      foreach($checkbox as $check)
         { 
-	        $sql = $this->connect->real_query('"DELETE FROM '. $this->getTableName().' WHERE sku ='.$check.'"');
+          $this->setColumnSku($check);
+          $sql='DELETE FROM ' . $this->getTableName() . ' WHERE '. $this->getColumnSku();
+	        $this->connect->query($sql);
         }
           header("Location: index.php"); exit;
       }
