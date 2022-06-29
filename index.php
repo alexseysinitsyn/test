@@ -5,9 +5,9 @@ require 'vendor/autoload.php';
  use Models\Product;
  
 	$model = new Product();
-	
 	$model->delete();
-	$list = $model->listAll();
+	
+	
 		
 	?>
 <!DOCTYPE html>
@@ -61,9 +61,10 @@ form {
 		<div>
 			<?php
 	
-	 			foreach($list as $one)
+	 			foreach($model->listAll() as $one)
 				 	{
-		 				echo $one;
+						$model->setOneProduct($one);
+						echo $model->getOneProduct();	
 	 				}
 
 			?>

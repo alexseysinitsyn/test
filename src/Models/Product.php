@@ -7,8 +7,8 @@ class Product extends Main
    public function __construct()
    {
     
-       $this->connect = mysqli_connect("sql4.freemysqlhosting.net","sql4501255","lyqGprQLi5","sql4501255");
-       /*$this->connect = mysqli_connect("localhost:8889","root","root","shop");*/
+       /*$this->connect = mysqli_connect("sql4.freemysqlhosting.net","sql4501255","lyqGprQLi5","sql4501255");*/
+       $this->connect = mysqli_connect("localhost:8889","root","root","shop");
        
    }
 
@@ -49,7 +49,7 @@ class Product extends Main
       {
 	      foreach($checkbox as $check)
         { 
-	        $sql = $this->connect->real_query("DELETE FROM products WHERE sku ='".$check."'");
+	        $sql = $this->connect->real_query('"DELETE FROM '. $this->getTableName().' WHERE sku ='.$check.'"');
         }
           header("Location: index.php"); exit;
       }
@@ -58,18 +58,10 @@ class Product extends Main
 
 
   public function listAll(){
-        
-    $list = array();
-    $sql = $this->connect->query("SELECT * FROM products");
-    $i=0;
-    foreach($sql as $one)
-    {
-      $list[$i]= '<div  class="block">
-         <input  type="checkbox" class="delete-checkbox" name="checked[]" value='.$one['sku'].'><p>'
-         .implode('<br>', $one).'<br></div>';
-         $i++;
-    }
-    return $list;
-  }
+   
+    $sql='SELECT ' . implode(', ', $this->getTableColumns()) . ' FROM ' . $this->getTableName();
+    return $this->connect->query($sql);
+     
+  } 
 
 }

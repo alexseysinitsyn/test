@@ -9,6 +9,7 @@ abstract class Main
     private $type;
     private $price;
     private $property;
+    private $oneProduct;
 
 
     public function getTableName()
@@ -73,6 +74,18 @@ abstract class Main
             $this->getPrice(),
             $this->getProperty()
         ];
+    }
+
+    public function getOneProduct()
+    {
+        return $this->oneProduct;
+    }
+
+    public function setOneProduct($one)
+    {
+       $this->oneProduct =  '<div  class="block">
+            <input  type="checkbox" class="delete-checkbox" name="checked[]" value='.$one['sku'].'><p>'
+            .implode('<br>', $one).'<br></div>';  
     }
 
 }
