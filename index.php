@@ -6,9 +6,6 @@ require 'vendor/autoload.php';
  
 	$model = new Product();
 	$model->delete();
-	
-	
-		
 	?>
 <!DOCTYPE html>
 <html>
@@ -44,9 +41,6 @@ form {
 	line-height: 2.0;
 }
 </style>
-<script>
-
-</script>
 <body>
 
 	<div class='bottom-border'>

@@ -16,7 +16,7 @@ abstract class Main
     {
         return 'products';
     }
-    
+
     public function getTableColumns()
     {
         return [
@@ -44,9 +44,6 @@ abstract class Main
     {
         $this->sku = $sku;
     }
-
-    
-
     public function getPrice()
     {
         return $this->price;
@@ -77,6 +74,15 @@ abstract class Main
         ];
     }
 
+    public function setProductAttributes(array $arr)
+    {
+            $this->sku = $arr['sku'];
+            $this->name = $arr['name'];
+            $this->price = $arr['price'];
+            $this->property = $arr['property'];
+            
+    }
+
     public function getOneProduct()
     {
         return $this->oneProduct;
@@ -84,9 +90,10 @@ abstract class Main
 
     public function setOneProduct($one)
     {
+        $this->setProductAttributes($one);
        $this->oneProduct =  '<div  class="block">
-            <input  type="checkbox" class="delete-checkbox" name="checked[]" value='.$one['sku'].'><p>'
-            .implode('<br>', $one).'<br></div>';  
+            <input  type="checkbox" class="delete-checkbox" name="checked[]" value="'.$this->getSku().'"><p>'
+            .implode('<br>', $this->getProductAttributes()).'<br></div>';  
     }
 
 }

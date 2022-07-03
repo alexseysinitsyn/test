@@ -8,7 +8,7 @@ class Product extends Main
    {
     
        $this->connect = mysqli_connect("sql4.freemysqlhosting.net","sql4501255","lyqGprQLi5","sql4501255");
-      /* $this->connect = mysqli_connect("localhost:8889","root","root","shop");*/
+       /*$this->connect = mysqli_connect("localhost:8889","root","root","shop");*/
        
    }
 
@@ -42,7 +42,7 @@ class Product extends Main
         $this->setPrice($_POST['price']);
         $this->setProperty($_POST['size'], $_POST['weight'], $_POST['height'], $_POST['width'], $_POST['length']); 
 
-        $sql='INSERT INTO ' . $this->getTableName() . '(' . implode(', ', $this->getTableColumns()) . ') VALUES ("' . implode('", "', $this->getProductAttributes()) . '")';
+        $sql='INSERT INTO ' . $this->getTableName() . ' VALUES ("' . implode('", "', $this->getProductAttributes()) . '")';
        $this->connect->query($sql);
           header("Location: index.php"); exit;
       }
@@ -50,15 +50,12 @@ class Product extends Main
 
     public function delete(){
       $checkbox = $_POST['checked'];
-      
       if($checkbox)
       {
 	      foreach($checkbox as $check)
         { 
           $this->setSku($check);
-          
           $sql='DELETE FROM ' . $this->getTableName() . ' WHERE sku = "'. $this->getSku().'"';
-          
 	        $this->connect->query($sql);
         }
           header("Location: index.php"); exit;
