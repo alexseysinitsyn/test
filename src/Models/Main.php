@@ -59,9 +59,9 @@ abstract class Main
     }
     public function setProperty($size, $weight, $height, $width, $length)
     {
-        $this->property = (!empty($size) ? ' Size:' .$size. 'MB' : ' ') 
-        .(!empty($weight) ? ' Weight:' . $weight . 'KG' : ' ')
-        .(!empty($height) ? ' Dimension:' . implode('x', [$height, $width, $length]) : ' ');
+        $this->property = (!empty($size) ? ' Size: ' .$size. 'MB' : ' ') 
+        .(!empty($weight) ? ' Weight: ' . $weight . 'KG' : ' ')
+        .(!empty($height) ? ' Dimension: ' . implode('x', [$height, $width, $length]) : ' ');
     }
 
     public function getProductAttributes()
