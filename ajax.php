@@ -109,11 +109,11 @@ class AuthorizationAjaxRequest extends AjaxRequest
 
         if ((preg_match("/[a-zа-яё]{1}/i",$password1))) {
             if (!(preg_match("/[\d]{1}/i",$password1))) {
-                $this->setFieldError("password", "Min 6 simbols - numbers and letters");
+                $this->setFieldError("password", "Password only numbers and letters");
                 return;
             }
         }else{
-            $this->setFieldError("password", "Min 6 simbols - numbers and letters");
+            $this->setFieldError("password", "Password only - numbers and letters");
             return;
         }
 

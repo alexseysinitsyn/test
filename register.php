@@ -39,8 +39,8 @@ require_once 'src/Models/Auth.php';
 
         <h2 class="form-signin-heading">Please sign up</h2>
         <input name="username" type="text" class="input-block-level" minlength="6" placeholder="Username" autofocus required="">
-        <input name="password1" type="password" class="input-block-level" placeholder="Password" required="">
-        <input name="password2" type="password" class="input-block-level" placeholder="Confirm password" required="">
+        <input name="password1" type="password" class="input-block-level" minlength="6" placeholder="Password" required="">
+        <input name="password2" type="password" class="input-block-level" minlength="6" placeholder="Confirm password" required="">
         <input type="email" name="email" class="input-block-level" placeholder="Email" required=""/>
         <input type="text" name="name" class="input-block-level" minlength="2" placeholder="Name" required=""/>
             
