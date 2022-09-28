@@ -1,12 +1,7 @@
 <?php 
 namespace Models;
 
-/** 
-* CRUD operations on a JSON noSQL database. 
-* 
-* Main class for creating, retreiving, updating and deleting records in a JSON noSQL database. 
-* 
-*/ 
+
 class Jsondb 
 { 
     
@@ -48,7 +43,7 @@ class Jsondb
  public function uDataBase($dbName,$data){ 
   $fileName = $this->dataFolder.'/'.$dbName; 
   $jsonData = json_encode($data); 
-  file_put_contents($fileName,$jsonData.PHP_EOL, FILE_APPEND | LOCK_EX); 
+  file_put_contents($fileName,$jsonData); 
  } 
  /** 
   * Deletes database 

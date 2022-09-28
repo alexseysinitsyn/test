@@ -24,7 +24,7 @@ class User
     public function getUser($username)
     {
         $db  = new Jsondb();
-        $arr =  $db->rDataBase('users');
+        $arr =  $db->rDataBase('users.json');
         foreach($arr as $index) {
         $key = strrpos($index,$username);
             if ($key) {
@@ -37,7 +37,7 @@ class User
     public function getPass($username, $password)
     {
         $db  = new Jsondb();
-        $arr =  $db->rDataBase('users');
+        $arr =  $db->rDataBase('users.json');
        foreach($arr as $index) 
        {
             if(strrpos($index,$username) && strrpos($index,sha1($password)))
@@ -51,7 +51,7 @@ class User
     public function getEmail($email)
     {
         $db  = new Jsondb();
-        $arr =  $db->rDataBase('users');
+        $arr =  $db->rDataBase('');
         foreach($arr as $index) {
         $key = strrpos($index,$email);
             if ($key) {
@@ -106,6 +106,6 @@ class User
     public function create($username, $password, $email, $name) {
         $hashes = $this->passwordHash($password);
         $jdb  = new Jsondb();
-        $result = $jdb->uDataBase('users',[$username, $hashes, $email, $name]);
+        $result = $jdb->uDataBase('users.json',[$username, $hashes, $email, $name]);
     }
 }
