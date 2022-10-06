@@ -106,6 +106,11 @@ class User
     public function create($username, $password, $email, $name) {
         $hashes = $this->passwordHash($password);
         $jdb  = new Jsondb();
+        $upOne = dirname( __FILE__, 4 );
+        $fileName = $upOne.'/users.json';
+       if(!file_exists($filename)){
+        $jdb->cDataBase('users.json');
+       }
         $result = $jdb->uDataBase('users.json',[$username, $hashes, $email, $name]);
     }
 }

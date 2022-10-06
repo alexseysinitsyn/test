@@ -4,8 +4,6 @@ namespace Models;
 
 class Jsondb 
 { 
-    
-    
  /** 
   * Creates database file 
   * 
@@ -14,8 +12,7 @@ class Jsondb
   */ 
  public function cDataBase($dbName){ 
     $upOne = dirname( __FILE__, 4 );
-    $dataFolder = $upOne.'/jdb';
-  $fileName = $dataFolder.'/'.$dbName; 
+  $fileName = $upOne.'/'.$dbName; 
   file_put_contents($fileName,null,FILE_APPEND); 
  } 
  /** 
@@ -26,8 +23,7 @@ class Jsondb
   */ 
  public function rDataBase($dbName){ 
     $upOne = dirname( __FILE__, 4 );
-    $dataFolder = $upOne.'/jdb';
-  $fileName = $dataFolder.'/'.$dbName; 
+  $fileName = $upOne.'/'.$dbName; 
   $data = file($fileName); 
   if( is_array($data) ){ 
    ksort($data); 
@@ -45,8 +41,7 @@ class Jsondb
   */ 
  public function uDataBase($dbName,$data){ 
     $upOne = dirname( __FILE__, 4 );
-    $dataFolder = $upOne.'/jdb';
-  $fileName = $dataFolder.'/'.$dbName; 
+  $fileName = $upOne.'/'.$dbName; 
   $jsonData = json_encode($data); 
   file_put_contents($fileName,$jsonData, FILE_APPEND | LOCK_EX); 
  } 
@@ -58,8 +53,7 @@ class Jsondb
   */ 
  public function dDataBase($dbName){
     $upOne = dirname( __FILE__, 4 );
-    $dataFolder = $upOne.'/jdb'; 
-  $fileName = $dataFolder.'/'.$dbName; 
+  $fileName = $upOne.'/'.$dbName; 
   unlink($fileName); 
  } 
  /** 
