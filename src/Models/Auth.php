@@ -51,7 +51,7 @@ class User
     public function getEmail($email)
     {
         $db  = new Jsondb();
-        $arr =  $db->rDataBase('');
+        $arr =  $db->rDataBase('users.json');
         foreach($arr as $index) {
         $key = strrpos($index,$email);
             if ($key) {

@@ -59,7 +59,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         }
 
         $this->status = "ok";
-        $this->setResponse("redirect", ".");
+        $this->setResponse("redirect", "/");
         $this->message = sprintf("Hello, %s! Access granted.", $username);
     }
 
@@ -78,7 +78,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $user = new Auth\User();
         $user->logout();
 
-        $this->setResponse("redirect", ".");
+        $this->setResponse("redirect", "/");
         $this->status = "ok";
     }
 
@@ -106,6 +106,25 @@ class AuthorizationAjaxRequest extends AjaxRequest
             return;
         }
 
+        if ((preg_match("/[\s]{1}/i",$username))) {
+                $this->setFieldError("username", "Username only numbers and letters");
+                return;
+            }
+
+            if ((preg_match("/^\s{1}/",$username))) {
+                $this->setFieldError("username", "Username only numbers and letters");
+                return;
+            }
+
+            if ((preg_match("/[\s]{1}/i",$password1))) {
+                $this->setFieldError("password", "Password only numbers and letters");
+                return;
+            }
+
+            if ((preg_match("/^\s{1}/",$password1))) {
+                $this->setFieldError("password", "Password only numbers and letters");
+                return;
+            }
 
         if ((preg_match("/[a-zа-яё]{1}/i",$password1))) {
             if (!(preg_match("/[\d]{1}/i",$password1))) {
@@ -137,7 +156,14 @@ class AuthorizationAjaxRequest extends AjaxRequest
         {
             $this->setFieldError("username", "Username exist");
             return;
-        }else if($user->getEmail($email))
+        }
+
+        if (!(preg_match("/@{1}[a-zа-яё]+[.]{1}/",$email))) {
+            $this->setFieldError("email", "Email type error");
+            return;
+        }
+
+        if($user->getEmail($email))
         {
             $this->setFieldError("email", "Email exist");
             return;

@@ -43,9 +43,7 @@ require_once 'src/Models/Auth.php';
         <input name="password2" type="password" class="input-block-level" minlength="6" placeholder="Confirm password" required="">
         <input type="email" name="email" class="input-block-level" placeholder="Email" required=""/>
         <input type="text" name="name" class="input-block-level" minlength="2" placeholder="Name" required=""/>
-            
-        <input type="hidden" name="act" value="register">
-        <input class="btn btn-large btn-primary" type="submit" name="Register"/>
+         <div id="buttons"></div>   
         <div class="alert alert-info" style="margin-top:15px;">
             <p>Already have account? <a href="/">Sign In.</a>
         </div>

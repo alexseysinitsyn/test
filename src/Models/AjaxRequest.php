@@ -34,7 +34,7 @@ class AjaxRequest
     public function getRequestParam($name)
     {
         if (array_key_exists($name, $this->request)) {
-            return trim($this->request[$name]);
+            return $this->request[$name];
         }
         return null;
     }

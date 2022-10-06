@@ -5,7 +5,7 @@ namespace Models;
 class Jsondb 
 { 
     
- public $dataFolder = 'jdb'; 
+    
  /** 
   * Creates database file 
   * 
@@ -13,7 +13,9 @@ class Jsondb
   * @return void 
   */ 
  public function cDataBase($dbName){ 
-  $fileName = $this->dataFolder.'/'.$dbName; 
+    $upOne = dirname( __FILE__, 4 );
+    $dataFolder = $upOne.'/jdb';
+  $fileName = $dataFolder.'/'.$dbName; 
   file_put_contents($fileName,null,FILE_APPEND); 
  } 
  /** 
@@ -23,8 +25,9 @@ class Jsondb
   * @return array Data or empty if none 
   */ 
  public function rDataBase($dbName){ 
-  
-  $fileName = $this->dataFolder.'/'.$dbName; 
+    $upOne = dirname( __FILE__, 4 );
+    $dataFolder = $upOne.'/jdb';
+  $fileName = $dataFolder.'/'.$dbName; 
   $data = file($fileName); 
   if( is_array($data) ){ 
    ksort($data); 
@@ -41,9 +44,11 @@ class Jsondb
   * @return void 
   */ 
  public function uDataBase($dbName,$data){ 
-  $fileName = $this->dataFolder.'/'.$dbName; 
+    $upOne = dirname( __FILE__, 4 );
+    $dataFolder = $upOne.'/jdb';
+  $fileName = $dataFolder.'/'.$dbName; 
   $jsonData = json_encode($data); 
-  file_put_contents($fileName,$jsonData); 
+  file_put_contents($fileName,$jsonData, FILE_APPEND | LOCK_EX); 
  } 
  /** 
   * Deletes database 
@@ -51,8 +56,10 @@ class Jsondb
   * @param string $dbName Name of database file to delete 
   * @return void 
   */ 
- public function dDataBase($dbName){ 
-  $fileName = $this->dataFolder.'/'.$dbName; 
+ public function dDataBase($dbName){
+    $upOne = dirname( __FILE__, 4 );
+    $dataFolder = $upOne.'/jdb'; 
+  $fileName = $dataFolder.'/'.$dbName; 
   unlink($fileName); 
  } 
  /** 

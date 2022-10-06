@@ -237,6 +237,7 @@
         };
 
         $(document).ready(function($) {
+            $("#buttons").html('<input type="hidden" name="act" value="register"><input class="btn btn-large btn-primary" type="submit" name="Register"/>')
             script.init();
         });
 })(jQuery);
